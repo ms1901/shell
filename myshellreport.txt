@@ -1,0 +1,100 @@
+Basic Linux shell 
+Name:Manasvi Singh
+
+Commands Implemented:
+Internal Commands : Commands which are built into the shell.
+	1)cd - Change the shell working directory.
+	Options Implemented: 
+		1)cd ~: returns you to your user account's home folder.
+		2)cd ..: move to the parent directory of current directory, or the directory one level up from the current directory. “..” represents parent directory. 
+		3) cd(no arguments):same as cd ~
+		4) cd -L [dir]:	force symbolic links to be followed,resolve symbolic links in DIR after processing instances of `..'
+		5)cd --help:print help
+	Errors handled:System call chdir is used to implement cd,therefore all errors of chdir have been handled(chdir() returns -1 if error occurs):
+	1)EACCESS:Search permission is denied for any component of the pathname
+	2)ELOOP:loop exists in symbolic links
+	3)ENAMETOOLONG:length of path is too long
+	4)ENOENT:Component of path is not existing directory.
+	5)ENOTDIR:not a directory
+	6)Invalid directory
+
+	2)pwd-Print the name of the current working directory.
+	Options Implemented: 
+		1)pwd -P :	print the physical directory, without any symbolic links.
+		2)pwd --help:print help.
+	Errors handled:System call getcwd is used to implement pwd,therefore all errors of getcwd have been handled(getcwd() returns null pointer if error occurs):
+	1)EINVAL:The size of argument is zero.
+	2)ERANGE:THe size of argument is lesser than pathname length.
+	3)EACCESS:Read /serach permission not given
+
+
+	3)exit-Exit the custom shell.
+	Options Implemented:
+		1)exit --help:prints help
+
+	4)history-Display or manipulate the history list(file in our case).
+	Options Implemented:
+		1)history --help:print help.
+		2)history -c:clears the content of history file.
+	Errors handled:1)File does not exist error.
+	5) echo: Write arguments to the standard output.
+	Options Implemented:
+		1)echo -n:don't append a newline.
+		2)echo -E:explicitly suppress interpretation of backslash escapes
+		3)echo --help:print help
+External commands:
+	1) ls : list directory
+		Options-
+			1)-a : List all files and directories
+			2)A : List everything except . and ..
+			Errors handled:System call scandir is used to implement ls,therefore all errors of scandir have been handled(scandir() returns -1 if error occurs):
+			1)ENOENT :The path in argument does not exist.
+			2) ENOMEM Insufficient memory 
+			3)ENOTDIR:The path in argument is not a directory.
+			Cases Handled: ls(with no arguments),ls (with argument), ls argumnet -flag,ls -flag argument
+
+	2) cat : read the following files
+		Options-
+			1)-b :number non empty output lines
+			2)-n : Number all output lines.
+			Errors Handled:file specified does not exist error
+			Cases Handled:cat can work on multiple arguments.
+
+	3) rm : remove file
+		Options-
+			1)-f :  Force removal. Do not give any errors if encountered
+			2)-v : explain what is being done.
+			Error Handled:rm is implemneted here by using unlink() therefore,all errors of unlink() have been handled.unlink() returns -1 for error.
+
+			1)EACCES:one of the directories in pathname did not allow search permission. 
+			2)EBUSY:The file pathname cannot be unlinked because it is being used by the system or another process
+			3)EFAULT:pathname points outside your accessible address space. 
+ 			4)EISDIR:pathname refers to a directory. 
+ 			5)ENAMETOOLONG:pathname was too long. 
+ 			and many others.
+ 			6)Too few arguments
+	4) date : show the date in various formats
+		Options-
+			1)	--help:print help
+			2)	-u /--utc :print Universal time
+		Errors Handled:localtime_r and gmtime are used which return NULL values in case of error which has been hadled.
+	5) mkdir : make a directory
+		Options-
+			-v : verbose directory making (tell whatever mkdir is currently doing)
+			--help : print help
+		Errors Handled:mkdir system call is used implement the command,thus all error of mkdir system call are handled.
+		1)EACCES The parent directory does not allow write permission to the
+              process.
+		2)EEXIST pathname already exists 
+
+      	3) EFAULT pathname points outside your accessible address space.
+      	4)EMLINK The number of links to the parent directory would exceed
+              LINK_MAX.
+        5)ENAMETOOLONG:pathname was too long.
+        6)ENOENT A directory component in pathname does not exist or is a
+              dangling symbolic link.
+        7)A component used as a directory in pathname is not, in fact, a
+              directory.
+
+       
+

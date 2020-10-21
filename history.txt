@@ -1,0 +1,37 @@
+historu
+history
+pwd wkad
+pwd mana
+echo -n Helloworld
+echo a dg wgd 
+echo -n dvqa  qwa 
+echo helo\t wgda
+echo adks\tkda
+echo jk
+
+echo vjda\\s
+cd ./src
+cd ./home
+cd home
+cd /home
+mkdirt has gad ag
+cd ~
+cd Documents
+mkdirt dhja as ak
+ls
+date
+date -u
+cat hello.txt
+rm hello.txt
+pwd
+pwd -P
+history
+exit
+ls
+rm sample1.txt
+rm samp.txt gs.txt
+rm samp2.txt gq.txt
+rm -r vaj
+rm -f gewha
+cat -n history
+cat -n history.txt

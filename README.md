@@ -1,5 +1,5 @@
 # shell
-Linux shell made using  system calls from C programs
+Linux shell made using  system calls from C programs. 
 Steps to run the shell:
 1)download the code
 2)cd into this directory
